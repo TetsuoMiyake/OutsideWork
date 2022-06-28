@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.HitMapper">
+	<select id="findAll" resultType="com.example.demo.entity.Hit">
+		SELECT
+			id,
+			content,
+			active
+		FROM
+			hits
+	</select>
+
+	<select id="allCount" resultType="int">
+		SELECT
+			count(*)
+		FROM
+			hits;
+	</select>
+
+	<select id="batCount" resultType="int">
+		SELECT
+			count(*)
+		FROM
+			hits
+		WHERE
+			bat = 1
+		AND
+			active = 1;
+	</select>
+
+	<select id="activeCount" resultType="int">
+		SELECT
+			count(*)
+		FROM
+			hits
+		WHERE
+			active = 1;
+	</select>
+
+	<select id="editId" resultType="com.example.demo.entity.Hit">
+		SELECT
+			id,
+			content,
+			active,
+			bat
+		FROM
+			hits
+		WHERE
+			id=#{id}
+	</select>
+
+	<insert id="create">
+		INSERT INTO hits(
+			id,
+			content,
+			active,
+			bat
+		) VALUES (
+			#{id},
+			#{content},
+			#{active},
+			#{bat}
+		)
+	</insert>
+
+	<update id="update">
+		UPDATE hits SET
+			id=#{id},
+			content=#{content},
+			active=#{active},
+			bat=#{bat}
+		WHERE
+			id=#{id}
+	</update>
+</mapper>

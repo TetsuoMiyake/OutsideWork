@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>打席計算</title>
+	<meta charset="utf-8" />
+	</head>
+	<body>
+		<div><a th:href="@{/hits/create}">登録</a></div>
+		<table>
+			<tr>
+				<th>打席数</th>
+				<th>打数</th>
+				<th>安打</th>
+				<th>打率</th>
+			</tr>
+			<tr>
+				<td th:text="${allCount}"></td>
+				<td th:text="${activeCount}"></td>
+				<td th:text="${batCount}"></td>
+				<td th:text="${average}"></td>
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+				<th>打席</th>
+				<th>打席内容</th>
+			</tr>
+			<tr th:each="hit: ${hits}">
+				<td th:text="${hit.id}"></td>
+				<td th:text="${hit.content}"></td>
+				<td><a th:href="@{/hits/{id}/edit(id=${hit.id})}">編集</a></td>
+			</tr>
+		</table>
+	</body>
+</html>

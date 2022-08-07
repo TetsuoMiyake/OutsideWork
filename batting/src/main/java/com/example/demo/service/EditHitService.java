@@ -26,6 +26,7 @@ public class EditHitService {
 		updateForm.setContent(hit.getContent());
 		updateForm.setActive(hit.getActive());
 		updateForm.setBat(hit.getBat());
+		updateForm.setMatch_id(hit.getMatch_id());
 
 		return updateForm;
 	}
@@ -37,6 +38,7 @@ public class EditHitService {
 		entity.setContent(form.getContent());
 		entity.setActive(form.getActive());
 		entity.setBat(form.getBat());
+		entity.setMatch_id(form.getMatch_id());
 
 		return mapper.update(entity);
 	}

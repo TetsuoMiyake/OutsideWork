@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.DateMapper">
+	<select id="allDate" resultType="com.example.demo.entity.MatchSchedule">
+		SELECT
+			id,
+			dt,
+			team_id
+		FROM
+			matchSchedule
+	</select>
+
+	<select id="findById" resultType="com.example.demo.entity.MatchSchedule">
+		SELECT
+			id,
+			dt,
+			team_id
+		FROM
+			matchSchedule
+		WHERE
+			id=#{id}
+	</select>
+
+	<select id="allHit" resultType="com.example.demo.entity.Hit">
+		SELECT
+			content,
+			match_id
+		FROM
+			hits
+		WHERE
+			match_id=#{id}
+	</select>
+
+	<insert id="create">
+		INSERT INTO matchSchedule (
+			id,
+			dt,
+			team_id
+		) VALUES (
+			#{id},
+			#{dt},
+			#{team_id}
+		)
+	</insert>
+</mapper>

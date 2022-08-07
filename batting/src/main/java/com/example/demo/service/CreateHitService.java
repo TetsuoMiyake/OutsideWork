@@ -20,6 +20,7 @@ public class CreateHitService {
 		entity.setContent(form.getContent());
 		entity.setActive(form.getActive());
 		entity.setBat(form.getBat());
+		entity.setMatch_id(form.getMatch_id());
 
 		return mapper.create(entity);
 	}

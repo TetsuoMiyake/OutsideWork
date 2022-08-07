@@ -25,8 +25,8 @@ import com.example.demo.service.ShowDateService;
 import com.example.demo.form.UpdateHitForm;
 
 @Controller
-@RequestMapping("/hits")
-public class BattingController {
+@RequestMapping("/date")
+public class MatchScheduleController {
 
 	@Autowired
 	private GetAllHitsService getAllHitsService;
@@ -35,69 +35,46 @@ public class BattingController {
 	private GetAllDatesService getAllDatesService;
 
 	@Autowired
-	private CreateHitService createHitService;
-
-	@Autowired
 	private CreateDateService createDateService;
-
-	@Autowired
-	private EditHitService editHitService;
 
 	@Autowired
 	private ShowDateService showDateService;
 
+
+
 	@GetMapping
-	public String index(Model model) {
-		List<Hit> hits = getAllHitsService.getAllHits();
+	public String dt_index(Model model) {
+		List<MatchSchedule> matchSchedules = getAllDatesService.getAllDates();
+		model.addAttribute("matchSchedules", matchSchedules);
+
+		return "date/index";
+	}
+
+	@GetMapping("/{id}/show")
+	public String displayView(@PathVariable("id") Long id, Model model) {
+		MatchSchedule matchSchedule = showDateService.findById(id);
+		model.addAttribute("matchDate", matchSchedule);
+		List<Hit> hits = showDateService.getAllHits(id);
 		model.addAttribute("hits", hits);
 
-		int allCount = getAllHitsService.getAllCount();
-		model.addAttribute("allCount", allCount);
-
-		int batCount = getAllHitsService.getBatCount();
-		model.addAttribute("batCount", batCount);
-
-		int activeCount = getAllHitsService.getActiveCount();
-		model.addAttribute("activeCount", activeCount);
-
-		double a = (double)batCount / activeCount;
-		double average = ((double)Math.round(a * 1000))/1000;
-		model.addAttribute("average", average);
-
-		return "hits/index";
+		return "date/show";
 	}
-	
 
 	@GetMapping("/create")
 	public String create(Model model) {
-		model.addAttribute("form", new CreateHitForm());
-		return "hits/create";
+		model.addAttribute("form", new CreateDateForm());
+		return "date/create";
 	}
 
 	@PostMapping
-	public String create(@ModelAttribute("form") CreateHitForm form, BindingResult result, Model model) {
+	public String create(@ModelAttribute("form") CreateDateForm form, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			model.addAttribute("form", form);
-			return "hits/create";
+			return "date/create";
 		}
 
-		createHitService.create(form);
-		return "redirect:/hits";
-	}
-
-	@GetMapping("/{id}/edit")
-	public String edit(@PathVariable("id") Long id, Model model) {
-		Hit hit = editHitService.editId(id);
-		UpdateHitForm updateform = editHitService.setForm(hit);
-		model.addAttribute("form", updateform);
-
-		return "hits/edit";
-	}
-
-	@PostMapping("/update")
-	public String update(@ModelAttribute("form") UpdateHitForm form, BindingResult result, Model model) {
-		editHitService.update(form);
-		return "redirect:/hits";
+		createDateService.create(form);
+		return "redirect:/date";
 	}
 
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>試合日一覧</title>
+	<meta charset="utf-8" />
+	</head>
+	<body>
+		<div><a th:href="@{/date/create}">試合日程登録</a></div>
+		<div><a th:href="@{/hits}">打席記録</a></div>
+
+		<table>
+			<tr>
+				<th></th>
+				<th>試合日</th>
+				<th>打席内容</th>
+			</tr>
+			<tr th:each="matchSchedule: ${matchSchedules}">
+				<td th:text="${matchSchedule.id}"></td>
+				<td th:text="${matchSchedule.dt}"></td>
+				<td th:text="${matchSchedule.team_id}"></td>
+				<td><a th:href="@{/date/{id}/show(id=${matchSchedule.id})}">詳細</a></td>
+			</tr>
+		</table>
+	</body>
+</html>

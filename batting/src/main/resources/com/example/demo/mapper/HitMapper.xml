@@ -45,7 +45,8 @@
 			id,
 			content,
 			active,
-			bat
+			bat,
+			match_id
 		FROM
 			hits
 		WHERE
@@ -57,12 +58,14 @@
 			id,
 			content,
 			active,
-			bat
+			bat,
+			match_id
 		) VALUES (
 			#{id},
 			#{content},
 			#{active},
-			#{bat}
+			#{bat},
+			#{match_id}
 		)
 	</insert>
 
@@ -71,7 +74,8 @@
 			id=#{id},
 			content=#{content},
 			active=#{active},
-			bat=#{bat}
+			bat=#{bat},
+			match_id=#{match_id}
 		WHERE
 			id=#{id}
 	</update>

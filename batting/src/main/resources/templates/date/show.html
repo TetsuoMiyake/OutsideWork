@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>詳細</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+  	<p>詳細</p>
+	<div class="form-body">
+		<div th:text="${dt}"></div>
+		<p>対戦チーム</p>
+		<div th:text="${id}"></div>
+		<table>
+			<tr>
+				<th>打席</th>
+				<th>打席内容</th>
+			</tr>
+			<tr th:each="hit: ${hits}">
+				<td th:text="${hit.content}"></td>
+			</tr>
+		</table>
+		<div><a th:href="@{/date}">戻る</a></div>
+	</div>
+  </body>
+</html>

@@ -7,12 +7,8 @@
   <body>
   	<p>詳細</p>
 	<div class="form-body">
-		<div th:text="${dt}"></div>
-		<p>対戦チーム</p>
-		<div th:text="${id}"></div>
 		<table>
 			<tr>
-				<th>打席</th>
 				<th>打席内容</th>
 			</tr>
 			<tr th:each="hit: ${hits}">

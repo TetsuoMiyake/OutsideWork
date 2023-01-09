@@ -6,11 +6,15 @@
 <mapper namespace="com.example.demo.mapper.DateMapper">
 	<select id="allDate" resultType="com.example.demo.entity.MatchSchedule">
 		SELECT
-			id,
+			matchSchedule.id,
 			dt,
-			team_id
+			name
 		FROM
 			matchSchedule
+		INNER JOIN
+			teams
+		ON
+			matchSchedule.team_id = teams.id
 	</select>
 
 	<select id="findById" resultType="com.example.demo.entity.MatchSchedule">

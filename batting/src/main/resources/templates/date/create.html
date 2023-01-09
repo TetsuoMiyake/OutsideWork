@@ -11,16 +11,18 @@
 
 			<div class="form-row">
 				<label for="name">日程</label>
-				<input class="parts" type="text" th:field="*{dt}" />
+				<input class="parts" type="date" th:field="*{dt}" th:value ="${dt}"/>
 			</div>
 
 			<div class="form-row">
 				<label for="active">対戦チーム</label>
-				<input class="parts" name="team_id"  th:field="*{team_id}" />
+				<select class="parts" name="team_id"  th:field="*{team_id}">
+					<option th:each="team:${teams}" th:value="${team.id}" th:text="${team.name}"></option>
+				</select>
 			</div>
 
 			<div class="right-ctrl-area">
-				<input type="submit" value="新規登録">
+				<input type="submit" value="新規登録" />
 			</div>
 			<div><a th:href="@{/date}">戻る</a></div>
 		</form>

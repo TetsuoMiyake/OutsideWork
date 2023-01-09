@@ -40,6 +40,11 @@
 			</div>
 			<div><a th:href="@{/hits}">戻る</a></div>
 		</form>
+		<form method="post" action="/" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" name="upload_file" value="ファイルをアップロード">
+
+    </form>
 	</div>
 
   </body>

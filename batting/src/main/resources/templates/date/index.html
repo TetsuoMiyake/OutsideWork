@@ -17,7 +17,7 @@
 			<tr th:each="matchSchedule: ${matchSchedules}">
 				<td th:text="${matchSchedule.id}"></td>
 				<td th:text="${matchSchedule.dt}"></td>
-				<td th:text="${matchSchedule.team_id}"></td>
+				<td th:text="${matchSchedule.name}"></td>
 				<td><a th:href="@{/date/{id}/show(id=${matchSchedule.id})}">詳細</a></td>
 			</tr>
 		</table>

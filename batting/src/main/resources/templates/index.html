@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>メインページ</title>
-</head>
-<body>
-メインページです。
-</body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>メインページ</title>
+	</head>
+	<body>
+		メインページです。
+		<form role="form" id="logout" th:action="@{/logout}" method="post">
+    		<button type="submit">ログアウト</button>
+		</form>
+	</body>
 </html>

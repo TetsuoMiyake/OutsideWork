@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,23 +16,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.entity.Hit;
 import com.example.demo.entity.MatchSchedule;
 import com.example.demo.entity.Team;
-import com.example.demo.form.CreateHitForm;
 import com.example.demo.form.CreateDateForm;
-import com.example.demo.service.CreateHitService;
 import com.example.demo.service.CreateDateService;
-import com.example.demo.service.EditHitService;
-import com.example.demo.service.GetAllHitsService;
 import com.example.demo.service.GetAllDatesService;
 import com.example.demo.service.GetAllTeamsService;
 import com.example.demo.service.ShowDateService;
-import com.example.demo.form.UpdateHitForm;
+
+
 
 @Controller
 @RequestMapping("/date")
 public class MatchScheduleController {
 
-	@Autowired
-	private GetAllHitsService getAllHitsService;
 
 	@Autowired
 	private GetAllDatesService getAllDatesService;

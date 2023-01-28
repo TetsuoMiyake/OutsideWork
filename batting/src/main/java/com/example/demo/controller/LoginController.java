@@ -28,4 +28,10 @@ public class LoginController {
 		return "index";
 	}
 
+	//ログアウト成功時の画面へ遷移
+    @RequestMapping("/logout")
+    String afterLogout() {
+        return "login";
+    }
+
 }

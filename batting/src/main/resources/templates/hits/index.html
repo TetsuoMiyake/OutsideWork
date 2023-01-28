@@ -5,6 +5,9 @@
 	<meta charset="utf-8" />
 	</head>
 	<body>
+		<form role="form" id="logout" th:action="@{/logout}" method="post">
+    		<a href="javascript:logout.submit()">ログアウト</a>
+		</form>
 		<div><a th:href="@{/hits/create}">打席記録登録</a></div>
 		<div><a th:href="@{/date}">試合日程</a></div>
 		<table>

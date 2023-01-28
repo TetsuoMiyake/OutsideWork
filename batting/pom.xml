@@ -62,6 +62,11 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-java8time</artifactId>
+        </dependency>
+
 		<!-- ログイン機能 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
